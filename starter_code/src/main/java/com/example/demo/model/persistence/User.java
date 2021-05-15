@@ -13,25 +13,28 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "user")
+
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonProperty
 	private long id;
-	
+
 	@Column(nullable = false, unique = true)
 	@JsonProperty
 	private String username;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cart_id", referencedColumnName = "id")
+	@JoinColumn(name = "cart_id", referencedColumnName = "id")
 	@JsonIgnore
-    private Cart cart;
-	
+	private Cart cart;
+
 	public Cart getCart() {
 		return cart;
 	}
@@ -55,7 +58,21 @@ public class User {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
-	
-	
+
+	public User() {}
+
+	public User(long id, String username, Cart cart) {
+		this.id = id;
+		this.username = username;
+		this.cart = cart;
+	}
+
+	public User(String userName) {
+		this.username = userName;
+	}
+
+	@Override
+	public String toString() {
+		return "User{" + "id=" + id + ", username='" + username + '\'' + ", cart=" + cart + '}';
+	}
 }
