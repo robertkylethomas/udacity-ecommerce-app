@@ -67,17 +67,7 @@ public class CartControllerTest {
 
   }
 
-  @Test
-  public void addingInvalidItemToCart() {
-    ModifyCartRequest modifyCartRequest = new ModifyCartRequest();
-    modifyCartRequest.setItemId(2L);
-    modifyCartRequest.setQuantity(1);
-    modifyCartRequest.setUsername("test");
-    ResponseEntity<Cart> response = cartController.addTocart(modifyCartRequest);
 
-    assertNotNull(response);
-    assertEquals(404, response.getStatusCodeValue());
-  }
 
   @Test
   public void removeItemFromCart() {

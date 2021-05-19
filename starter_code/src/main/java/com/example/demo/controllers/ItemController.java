@@ -28,27 +28,12 @@ public class ItemController {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Item> getItemById(@PathVariable Long id) {
-		Optional<Item> optionalItem = itemRepository.findById(id);
-	  Item item = new Item();
-		ResponseEntity<Item> responseEntity = null;
-
-    System.out.println("==================");
-    System.out.println(optionalItem);
-    System.out.println("==================");
-
-		optionalItem.ifPresentOrElse(item1 -> {
-      item.setName(item1.getName());
-      item.setId(item1.getId());
-      item.setDescription(item1.getDescription());
-      item.setPrice(item1.getPrice());
-    }, () -> {
-
-
-    });
-
-
-
-	  return optionalItem.isPresent() ? ResponseEntity.ok(item) : ResponseEntity.notFound().build();
+    Optional<Item> item = itemRepository.findById(id);
+    if(item == null){
+	    return ResponseEntity.notFound().build();
+    } else {
+	    return ResponseEntity.of(item);
+    }
 	}
 
 	@GetMapping("/name/{name}")

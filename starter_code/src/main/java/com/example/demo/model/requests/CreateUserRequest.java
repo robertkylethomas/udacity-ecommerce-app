@@ -7,6 +7,12 @@ public class CreateUserRequest {
 	@JsonProperty
 	private String username;
 
+  @JsonProperty
+  private String password;
+
+  @JsonProperty
+  private String confirmationPassword;
+
 	public String getUsername() {
 		return username;
 	}
@@ -15,10 +21,28 @@ public class CreateUserRequest {
 		this.username = username;
 	}
 
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public String getConfirmationPassword() {
+    return confirmationPassword;
+  }
+
+  public void setConfirmationPassword(String confirmationPassword) {
+    this.confirmationPassword = confirmationPassword;
+  }
+
   @Override
   public String toString() {
     return "CreateUserRequest{" +
       "username='" + username + '\'' +
+      ", password='" + password + '\'' +
+      ", confirmationPassword='" + confirmationPassword + '\'' +
       '}';
   }
 }
