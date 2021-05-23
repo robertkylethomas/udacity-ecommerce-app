@@ -61,7 +61,8 @@ public class UserController {
 	public ResponseEntity<User> createUser(@RequestBody CreateUserRequest createUserRequest) {
 		User user = new User();
 		user.setUsername(createUserRequest.getUsername());
-    if (
+
+		if (
       (createUserRequest.getPassword().length() <= 6) ||
         !(createUserRequest.getPassword().equals(createUserRequest.getConfirmationPassword()))
     ) {

@@ -52,6 +52,8 @@ public class UserControllerTest {
     CreateUserRequest createUserRequest = new CreateUserRequest();
 
     createUserRequest.setUsername("demo");
+    createUserRequest.setPassword("Password1234");
+    createUserRequest.setConfirmationPassword("Password1234");
 
     ResponseEntity<User> responseEntity = userController.createUser(createUserRequest);
     assertNotNull(responseEntity);
@@ -94,9 +96,6 @@ public class UserControllerTest {
 
   @Test
   public void findUserByIdNotFound(){
-
-    // TODO this isnt working so lekker
-
     ResponseEntity<User> userResponseEntity = userController.findById(999L);
     System.out.println(userResponseEntity);
     assertNotNull(userResponseEntity);
