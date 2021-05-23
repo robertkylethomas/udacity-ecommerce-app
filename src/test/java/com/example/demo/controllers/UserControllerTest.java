@@ -47,8 +47,6 @@ public class UserControllerTest {
   @Test
   public void createUser(){
 
-    // TODO: add and check passwords
-
     CreateUserRequest createUserRequest = new CreateUserRequest();
 
     createUserRequest.setUsername("demo");
